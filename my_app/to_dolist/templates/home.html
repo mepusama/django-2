@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{% load static %}
+
+<style>
+body  {
+  background-image: url({% static 'images/two.jpg' %});
+  background-repeat:no-repeat;
+ 
+  height: 900px;
+  background-size: cover;
+  position: relative;
+
+}
+</style>
+
+{% if all_tasks %}
+<table class="table">
+	<thead class="thead-light">
+	<th> Task </th>
+	
+	<th><center> Delete </center></th>
+	{% for obj in all_tasks %}
+
+		<tr class="table-warning">
+		<td><a href="{% url 'edit' obj.id %}">{{obj.task}}</a></td>    
+		
+		<td> <center> <a href="{% url 'delete' obj.id %}"> Delete </a> </center> </td>
+		</tr>	
+		
+		
+
+	{% endfor %}
+
+</table>
+{% endif %}
+
+{% endblock %}
+

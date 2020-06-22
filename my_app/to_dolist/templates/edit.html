@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{% load static %}
+
+<style>
+body  {
+  background-image: url({% static 'images/two.jpg' %});
+  background-repeat:no-repeat;
+ 
+  height: 900px;
+  background-size: cover;
+  position: relative;
+
+}
+</style>
+
+{% if task %}
+	
+	<form class="form-inline my-2 my-lg-0" method="Post">
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" placeholder="{{task.task}}" value="{{task.task}}" aria-label="Search" name="task">
+      <button class="btn btn-outline-primary my-2 my-lg-0" type="submit">Edit Task</button>
+    </form>
+
+{% endif %}
+
+{% endblock %}
+
